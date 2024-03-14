@@ -25,15 +25,15 @@ git clone https://github.com/KumaranElavazhagn/SangamCyber.git
 ```bash
 cd sangamCyber
 ```
-3. **Install dependencies:
+3. **Install dependencies:**
 ```bash
 go mod tidy
 ```
-4. **Build the project:
+4. **Build the project:**
 ```bash
 go build
 ```
-5. **Run the project:
+5. **Run the project:**
 ```bash
 go run main.go
 ```
