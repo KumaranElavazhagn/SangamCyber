@@ -1,6 +1,6 @@
 ## Sangam Cyber
 
-sangamCyber is a Go project aimed at providing user authentication and user information management through HTTP APIs. It utilizes Gorilla Mux router and CORS middleware for handling HTTP requests.
+sangamCyber is a Go project aimed at providing user authentication and user information management through HTTP APIs. It utilizes the Gorilla Mux router and CORS middleware for handling HTTP requests. The main goal of the project is to securely store passwords in the database using the Tamil language, providing enhanced security and user experience.
 
 ### Project Structure
 
@@ -19,27 +19,27 @@ The project is structured as follows:
 
 1. **Clone the repository:**
 ```bash
-   git clone <repository_url>
+git clone <repository_url>
 ```
 2. **Navigate to the project directory:**
 ```bash
-    cd sangamCyber
+cd sangamCyber
 ```
 3. **Install dependencies:
 ```bash
-    go mod tidy
+go mod tidy
 ```
 4. **Build the project:
 ```bash
-    go build
+go build
 ```
 5. **Run the project:
 ```bash
-    go run main.go
+go run main.go
 ```
 
 By default, the project listens on port 8080.
 
 ### Endpoints
-- > POST /user/info: Insert user information.
-- > POST /user/auth: Authenticate user information.
+- POST /user/info: Insert user information.
+- POST /user/auth: Authenticate user information.
