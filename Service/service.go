@@ -30,11 +30,11 @@ func (r service) InsertUserInfo(req *dto.UserInfoRequest) (*dto.InsertUserRespon
 	// This block of code in the `InsertUserInfo` function is checking if the email or username provided
 	// in the request is already registered in the system.
 	if len(validateResponse.EmailInfo) > 0 {
-		errors = append(errors, "This email is already registered.")
+		errors = append(errors, "This email is already registered")
 	}
 
 	if len(validateResponse.UsernameInfo) > 0 {
-		errors = append(errors, "This userName is already registered.")
+		errors = append(errors, "This userName is already registered")
 	}
 
 	if len(errors) > 0 {
@@ -95,7 +95,7 @@ func (r service) AuthUserInfo(req *dto.AuthUserInfoRequest) (*dto.AuthUserRespon
 	// authenticating the user's password. Here's a breakdown of what it does:
 	err := bcrypt.CompareHashAndPassword([]byte(hashEnglish), []byte(req.Password))
 	if err != nil {
-		return nil, errs.ValidateResponse([]string{"Authentication failed:"}, http.StatusBadRequest)
+		return nil, errs.ValidateResponse([]string{"Invalid Password"}, http.StatusBadRequest)
 	} else {
 		return &dto.AuthUserResponse{
 			UserId: response.UserID,

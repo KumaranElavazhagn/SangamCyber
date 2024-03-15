@@ -74,16 +74,13 @@ func (r RepositoryDb) InsertUserInfoReq(req *dto.UserInfoRequest) (*dto.InsertUs
 		return nil, errs.NewUnexpectedError()
 	}
 
-	query := `INSERT INTO user_data (username, password, first_name, last_name, email_id, date_of_birth, created_by, modified_by)
-	VALUES($1, $2, $3, $4, $5, $6, 'admin', 'admin') RETURNING user_id as userId`
+	query := `INSERT INTO user_data (username, password, email_id, created_by, modified_by)
+	VALUES($1, $2, $3,'admin','admin') RETURNING user_id as userId`
 	var response int
 	execErr := client.QueryRow(query,
 		req.UserName,
 		req.Password,
-		req.FirstName,
-		req.LastName,
 		req.EmailID,
-		req.DateOfBirth,
 	).Scan(&response)
 
 	if execErr != nil {
@@ -120,7 +117,7 @@ func (r RepositoryDb) AuthUserInfo(req *dto.AuthUserInfoRequest) (*entity.AuthEn
 	}
 
 	if len(response) == 0 {
-		return nil, errs.ValidateResponse([]string{"Invalid userName"}, http.StatusInternalServerError)
+		return nil, errs.ValidateResponse([]string{"Invalid userName"}, http.StatusBadRequest)
 	}
 
 	return &entity.AuthEntityResponse{
